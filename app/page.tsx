@@ -7,10 +7,12 @@ import { columns } from "@/components/leads/columns";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { leadsApi, StatsResponse, LeadsResponse } from "@/lib/api/leads";
+import { analyticsApi } from "@/lib/api/analytics";
 import { Lead } from "@/lib/types";
 import { useAuth } from "@/lib/auth/auth-context";
 import { QuickActions } from "@/components/dashboard/quick-actions";
 import { AdvancedFilters, FilterState } from "@/components/dashboard/advanced-filters";
+import { BusinessInsights } from "@/components/dashboard/business-insights";
 
 export default function DashboardPage() {
   const [stats, setStats] = useState<StatsResponse | null>(null);
@@ -248,9 +250,9 @@ export default function DashboardPage() {
               <h3 className="text-lg font-medium">Recent Leads (Last 5)</h3>
             </div>
             <div className="bg-white dark:bg-slate-950 p-6 rounded-lg border shadow-sm">
-              <DataTable 
-                columns={columns} 
-                data={leads} 
+              <DataTable
+                columns={columns}
+                data={leads}
                 onRefresh={fetchData}
               />
             </div>

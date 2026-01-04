@@ -11,6 +11,7 @@ export interface Lead {
     website: string | null;
     status: LeadStatus;
     provinceId?: string;
+    created_at?: string;
 }
 
 export interface Province {
@@ -27,7 +28,7 @@ export interface User {
     role: 'superadmin' | 'admin';
     provinceId?: string;
     isActive: boolean;
-    createdAt?: string;
+    createdAt?: string; // Kept as is per existing file
     updatedAt?: string;
     provinces?: Province;
 }
@@ -55,20 +56,4 @@ export interface AuthUser {
     role: 'superadmin' | 'admin';
     provinceId?: string;
     province?: Province;
-}
-
-export interface CreateUserDto {
-    username: string;
-    email?: string;
-    password: string;
-    role: 'superadmin' | 'admin';
-    provinceId?: string;
-}
-
-export interface UpdateUserDto {
-    username?: string;
-    email?: string;
-    password?: string;
-    role?: 'superadmin' | 'admin';
-    provinceId?: string;
 }
